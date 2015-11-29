@@ -1,0 +1,32 @@
+digraph G {
+	node0->node11 [label = <0.30>];
+	node0->node4 [label = <0.50>];
+	node1->node11 [label = <0.20>];
+	node1->node4 [label = <0.20>];
+	node2->node4 [label = <0.10>];
+	node2->node5 [label = <0.60>];
+	node3->node4 [label = <0.70>];
+	node3->node5 [label = <0.60>];
+	node11->node6 [label = <0.90>];
+	node4->node7 [label = <0.30>];
+	node4->node8 [label = <0.70>];
+	node5->node8 [label = <0.40>];
+	node6->node9 [label = <0.60>];
+	node6->node10 [label = <0.90>];
+	node7->node10 [label = <0.40>];
+	node8->node10 [label = <0.20>];
+	node8->node9 [label = <0.80>];
+	node11->node9 [label = <0.10>];
+	node0 [label = <1>];
+	node1 [label = <2>];
+	node2 [label = <3>];
+	node3 [label = <4>];
+	node4 [label = <5>];
+	node5 [label = <6>];
+	node6 [label = <7>];
+	node7 [label = <8>];
+	node8 [label = <9>];
+	node9 [label = <10>];
+	node10 [label = <11>];
+	node11 [label = <12>];
+}

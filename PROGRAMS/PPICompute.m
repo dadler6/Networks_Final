@@ -1,8 +1,8 @@
-function [ P ] = ColorCoding( N, I, k )
+function [ P ] = PPICompute( N, I, k )
 % Dan Adler
 % Networks Final Project
 %
-% MAIN Function for Color Coding Algorithm
+% MAIN Function for Simple Algorithm
 %
 % INPUT: N is the network that is an |N| x 3 matrix (|N| = num of vertices)
 % First two columns are edges i -> j
@@ -29,18 +29,18 @@ for i = 1:length(I)
     % Get subgraph of G - {I/v}
     Gprime = getSubgraph(I(i),mlogN,I);
     % Get color coding of graph with vertex set N - {I/v}
-    Colorings = getColorCodings(I(i),Gprime,k);
+    Perms = getPerms(I(i),Gprime,k);
     % Initialize possible paths for this i
     curr_i = 1;
-    P_i = zeros(size(Colorings,1),k + 1);
+    P_i = zeros(size(Perms,1),k + 1);
     % Go through each color coding
-    for c = 1:length(Colorings)
+    for c = 1:length(Perms)
         % Find whether k-coloring is a k-path
-        path = IsKPath(Colorings(c,:),Gprime);
+        path = IsKPath(Perms(c,:),Gprime);
         % Compute weight if k-path
         if ~isempty(path)
             w = getWeight(Gprime,path);
-            P_i(curr_i,1:end-1) = Colorings(c,:);
+            P_i(curr_i,1:end-1) = Perms(c,:);
             P_i(curr_i,end) = w;
             curr_i = curr_i + 1;
         end

@@ -1,4 +1,4 @@
-function [ Colorings ] = getColorCodings(i, Gprime, k)
+function [ Perms ] = getPerms(i, Gprime, k)
 % Dan Adler
 % Networks Final Project
 %
@@ -6,7 +6,7 @@ function [ Colorings ] = getColorCodings(i, Gprime, k)
 % INPUT: Gprime is a graph without the nodes {I/i}
 % INPUT: k is the lengths of the paths we are finding
 
-% OUTPUT: Colorings is the matrix of all k-colorings of Gprime
+% OUTPUT: Perms is the matrix of all k-Perms of Gprime
 % (in reality, it is every permutation of Gprime - {i})
 
 % Get vertex set for Gprime
@@ -29,8 +29,8 @@ end
 
 vertices = vertices(1:num-1,1);
 
-% Get all 'colorings' or permutations of k vertices from n
-Colorings = zeros(nchoosek(length(vertices),k-1)*factorial(k-1),k-1);
+% Get all 'Perms' or permutations of k vertices from n
+Perms = zeros(nchoosek(length(vertices),k-1)*factorial(k-1),k-1);
 
 % Go through each combination and get all permutations
 combs = combnk(vertices,k-1);
@@ -41,11 +41,11 @@ end
 curr = 1;
 for c = 1:size(combs,1)
     p = perms(combs(c,:));
-    Colorings(curr:curr + length(p) - 1,:) = p;
+    Perms(curr:curr + length(p) - 1,:) = p;
     curr = curr + length(p);
 end
 
-Colorings = [ones(size(Colorings,1),1)*i Colorings];
+Perms = [ones(size(Perms,1),1)*i Perms];
 
 end
 
